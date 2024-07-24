@@ -6,6 +6,7 @@ import {PrismaClient} from '@prisma/client'
 
 const app = express();
 const prismaClient = new PrismaClient();
+const port = process.env.PORT || 4000;
 
 app.use(express.json())
 app.use(cors())
@@ -70,6 +71,6 @@ app.delete("/api/recipes/favourite", async (req,res) => {
 
 
 
-app.listen(5000, () => {
-    console.log("server running on localhost:5000")
-})
+app.listen(port, () => {
+    console.log(`Recipe app listening on ${port}`)
+  })
