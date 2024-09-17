@@ -6,7 +6,6 @@ import {PrismaClient} from '@prisma/client'
 
 const app = express();
 const prismaClient = new PrismaClient();
-const port = process.env.PORT || 4000;
 
 app.use(express.json())
 app.use(cors())
@@ -45,7 +44,7 @@ app.get("/api/recipes/favourite", async (req,res) => {
     try {
     const recipes = await prismaClient.favouriteRecipes.findMany();
     const recipeIds = recipes.map((recipe) => recipe.recipeId.toString())
-    
+
     const favourites = await RecipeAPI.getFavouriteRecipesByIds(recipeIds)
     return res.json(favourites);
     } catch(error){
@@ -71,6 +70,6 @@ app.delete("/api/recipes/favourite", async (req,res) => {
 
 
 
-app.listen(port, () => {
-    console.log(`Recipe app listening on ${port}`)
-  })
+app.listen(5000, () => {
+    console.log("server running on localhost:5000")
+})

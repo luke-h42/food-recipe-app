@@ -1,8 +1,8 @@
 import { Recipe } from "./types";
 
 export const searchRecipes = async(searchTerm:string, page:number) => {
-    //const baseUrl = new URL("http://localhost:5000/api/recipes/search");
-    const baseUrl = new URL("https://food-recipe-app-backend-o14e.onrender.com/api/recipes/search");
+    const baseUrl= new URL("https://food-recipe-app-server.vercel.app/")
+    // const baseUrl = new URL("http://localhost:5000/api/recipes/search");
     baseUrl.searchParams.append("searchTerm", searchTerm)
     baseUrl.searchParams.append("page",String(page))
 
@@ -15,8 +15,8 @@ export const searchRecipes = async(searchTerm:string, page:number) => {
 }
 
 export const getRecipeSummary= async (recipeId: string) => {
-    //const url = new URL(`http://localhost:5000/api/recipes/${recipeId}/summary`)
-    const url = new URL(`https://food-recipe-app-backend-o14e.onrender.com/api/recipes/${recipeId}/summary`)
+    // const url = new URL(`http://localhost:5000/api/recipes/${recipeId}/summary`)
+    const url = new URL(`https://food-recipe-app-server.vercel.app/${recipeId}/summary`)
     const response = await fetch(url)
     if(!response.ok) { 
         throw new Error(`HTTP error! Status: ${response.status}`)
@@ -25,19 +25,20 @@ export const getRecipeSummary= async (recipeId: string) => {
 }
 
 export const getFavouriteRecipes = async() => {
-    //const url = new URL('http://localhost:5000/api/recipes/favourite')
-    const url = new URL('https://food-recipe-app-backend-o14e.onrender.com/api/recipes/favourite')
+    // const url = new URL('http://localhost:5000/api/recipes/favourite')
+    const url = new URL('https://food-recipe-app-server.vercel.app/api/recipes/favourite')
+
     const response = await fetch(url);
     if (!response.ok){
         throw new Error(`HTTP error! Status: ${response.status}`)
-        
+
     }
     return await response.json();
 }
 
 export const addFavouriteRecipe = async(recipe: Recipe) => {
-    //const url = new URL('http://localhost:5000/api/recipes/favourite')
-    const url = new URL('https://food-recipe-app-backend-o14e.onrender.com/api/recipes/favourite')
+    // const url = new URL('http://localhost:5000/api/recipes/favourite')
+    const url = new URL('https://food-recipe-app-server.vercel.app/api/recipes/favourite')
     const body = {
         recipeId: recipe.id
     }
@@ -51,14 +52,14 @@ export const addFavouriteRecipe = async(recipe: Recipe) => {
     })
     if (!response.ok){
         throw new Error(`HTTP error! Status: ${response.status}`)
-        
+
     }
-    
+
 }
 
 export const removeFavouriteRecipe = async(recipe: Recipe) => {
-    //const url = new URL('http://localhost:5000/api/recipes/favourite')
-    const url = new URL('https://food-recipe-app-backend-o14e.onrender.com/api/recipes/favourite')
+    // const url = new URL('http://localhost:5000/api/recipes/favourite')
+    const url = new URL('https://food-recipe-app-server.vercel.app/api/recipes/favourite')
     const body = {
         recipeId: recipe.id
     }
@@ -72,6 +73,6 @@ export const removeFavouriteRecipe = async(recipe: Recipe) => {
     })
     if (!response.ok){
         throw new Error(`HTTP error! Status: ${response.status}`)
-        
+
     }
 }
