@@ -1,7 +1,7 @@
 import { Recipe } from "./types";
 
 export const searchRecipes = async(searchTerm:string, page:number) => {
-    const baseUrl= new URL("https://food-recipe-app-server.vercel.app/")
+    const baseUrl= new URL("https://food-recipe-app-server.vercel.app/api/recipes/search")
     // const baseUrl = new URL("http://localhost:5000/api/recipes/search");
     baseUrl.searchParams.append("searchTerm", searchTerm)
     baseUrl.searchParams.append("page",String(page))
