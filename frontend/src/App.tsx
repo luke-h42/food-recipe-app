@@ -16,6 +16,7 @@ const App = () => {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe| undefined>(undefined);
   const [selectedTab, setSelectedTab] = useState<Tabs>("search");
   const [favouriteRecipes, setFavouriteRecipes] = useState<Recipe[]>([]);
+  const [hasSearched, setHasSearched] = useState<boolean>(false)
   const pageNumber = useRef(1);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ const App = () => {
       const recipes = await api.searchRecipes(searchTerm,1)
       setRecipes(recipes.results);
       pageNumber.current =1;
+      setHasSearched(true)
     } catch (e) {
       console.log(e);
     }
@@ -106,7 +108,7 @@ const App = () => {
       })}
       </div>
       
-      {recipes ? <button className='view-more-button' onClick={handleViewMoreClick}>
+      {hasSearched ? <button className='view-more-button' onClick={handleViewMoreClick}>
         View More
       </button> : null }
 
