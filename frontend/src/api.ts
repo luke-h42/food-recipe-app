@@ -16,7 +16,7 @@ export const searchRecipes = async(searchTerm:string, page:number) => {
 
 export const getRecipeSummary= async (recipeId: string) => {
     // const url = new URL(`http://localhost:5000/api/recipes/${recipeId}/summary`)
-    const url = new URL(`https://food-recipe-app-server.vercel.app/${recipeId}/summary`)
+    const url = new URL(`https://food-recipe-app-server.vercel.app/api/recipes/${recipeId}/summary`)
     const response = await fetch(url)
     if(!response.ok) { 
         throw new Error(`HTTP error! Status: ${response.status}`)

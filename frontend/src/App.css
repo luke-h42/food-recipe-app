@@ -115,6 +115,7 @@ input {
   font-size: 2em;
   flex: 1;
   border: none;
+  
 }
 
 input:focus {
