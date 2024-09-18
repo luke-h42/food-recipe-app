@@ -115,7 +115,7 @@ input {
   font-size: 2em;
   flex: 1;
   border: none;
-  
+  max-width: calc(100vw - 3em)
 }
 
 input:focus {
