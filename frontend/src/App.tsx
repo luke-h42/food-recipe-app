@@ -106,11 +106,11 @@ const App = () => {
       })}
       </div>
       
-      
-
-      <button className='view-more-button' onClick={handleViewMoreClick}>
+      {searchTerm ? <button className='view-more-button' onClick={handleViewMoreClick}>
         View More
-      </button>
+      </button> : null }
+
+      
       
       </>) }
 
